@@ -1,0 +1,25 @@
+install pkg:
+
+go get github.com/revel/revel
+go get github.com/revel/cmd/revel
+go get github.com/go-xorm/xorm
+go get github.com/go-sql-driver/mysql
+go get code.google.com/p/go-uuid/uuid
+
+site:
+http://revel.github.io/tutorial/gettingstarted.html
+https://github.com/go-xorm/xorm
+
+
+http://getbootstrap.com
+
+http://www.iqiyi.com/jilupian/
+
+http://jilupian.youku.com
+
+
+https://github.com/zionist/charitablefond
+
+https://github.com/zzdboy/GoCMS
+
+https://github.com/jimmykuu/gopher

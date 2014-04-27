@@ -1,0 +1,53 @@
+{{template "admin/header.html" .}}
+
+
+<h4 class="sub-header">{{.title}} ｜<a href="{{url "Admin.CategoryList"}}">分类列表</a></h4>
+<div class="table-responsive">
+<form class="form-horizontal" role="form" method="post" action="{{if .category}}{{url "Admin.CategoryEdit" .category.Id}}{{else}}{{url "Admin.CategoryNew"}}{{end}}">
+	{{with $field :=field "category.Name" .}}
+	<div class="form-group">
+		<label for="name" class="col-sm-1 control-label">分类名称:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" id="{{$field.Name}}" name="{{$field.Name}}" value="{{$.category.Name}}">
+		</div>
+		<div class="col-sm-3">
+			<span class="text-danger">{{$field.Error}}</span>
+		</div>
+	</div>
+	{{end}}
+
+	{{with $field :=field "category.Intro" .}}
+	<div class="form-group">
+		<label for="cname" class="col-sm-1 control-label">说明:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" id="{{$field.Name}}" name="{{$field.Name}}" value="{{$.category.Intro}}">
+		</div>
+		<div class="col-sm-3">
+			<span class="text-danger">{{$field.Error}}</span>
+		</div>
+	</div>
+	{{end}}
+
+	{{with $field :=field "category.Cateid" .}}
+	<div class="form-group">
+		<label for="cateid" class="col-sm-1 control-label">分类的ID:</label>
+		<div class="col-sm-8">
+			<input type="text" class="form-control" id="{{$field.Name}}" name="{{$field.Name}}" value="{{$.category.Cateid}}">
+		</div>
+		<div class="col-sm-3">
+			<span class="text-danger">{{$field.Error}}</span>
+		</div>
+	</div>
+	{{end}}
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-primary">保存</buttou> 
+			<button type="button" class="btn btn-default" onclick="javascript:history.back();">取消</button>
+		</div>
+	</div>
+</form>
+</div>
+
+
+
+{{template "admin/footer.html" .}}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/public/ico/favicon.ico">
+    <title>后台管理 - {{.title}}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/public/admin/css/non-responsive.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="/public/lib/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/public/lib/html5shiv.js"></script>
+      <script src="/public/lib/respond.min.js"></script>
+    <![endif]-->
+
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/public/lib/jquery.min.js"></script>
+    <script src="/public/bootstrap/js/bootstrap.min.js"></script>
+    
+  </head>
+  <body>
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">后台管理</a>
+         
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">你好! | 退出登录</a></li>
+            <li><a href="#">网站首页</a></li>
+      <li><a href="#">系统</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">用户</a></li>
+      <li><a href="#">添加用户</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="{{url "Admin.CategoryList"}}">分类列表</a></li>
+              <li><a href="{{url "Admin.MovieList"}}">视频列表</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+              <li><a href="#">March 2013</a></li>
+              <li><a href="#">February 2013</a></li>
+            </ol>
+
+          
+           <li>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_article">视频管理</a></li>           
+
+            <ul  id="collapse_article" class="nav nav-sidebar panel-collapse collapse in">
+                
+                <li><a href="{{url "Admin.CategoryNew"}}">添加分类</a></li>
+                <li></li>
+                <li><a href="{{url "Admin.MovieNew"}}">发布视频</a></li>
+                <li><a href="/admin/tag">标签管理</a></li>
+            </ul>
+
+
+
+           <li>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_user">用户管理</a></li>           
+
+            <ul  id="collapse_user" class="nav nav-sidebar panel-collapse collapse">
+               <li><a href="#">用户列表</a></li>
+                <li><a href="#">添加用户</a></li>
+            </ul>
+
+
+            <li>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_sys">博客管理</a></li>           
+
+            <ul  id="collapse_sys" class="nav nav-sidebar panel-collapse collapse">
+                <li><a href="#">博客分类</a></li>
+                <li><a href="#">添加分类</a></li>
+                <li><a href="#">博客列表</a></li>
+                <li><a href="#">添加博客</a></li>
+            </ul>
+
+        </div>
+
+        <div class="col-sm-9  col-md-10">
+       
+     

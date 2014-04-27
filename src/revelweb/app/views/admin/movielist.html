@@ -1,0 +1,37 @@
+{{set . "title" "视频列表"}}
+{{template "admin/header.html" .}}
+
+<h4 class="sub-header">视频列表｜<a href="{{url "Admin.MovieNew"}}">添加视频</a></h4>
+<div class="table-responsive">
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>标题</th>
+		<!-- 	<th>介绍</th> 
+			<th>详细</th>
+			<th>分类ID</th>
+			<th>访问次数</th>
+			<th>建立时间</th>
+			<th>更新时间</th> -->
+			<th>操作</th> 
+		</tr>
+	</thead>
+	<tbody>
+		{{range .movies}}
+		<tr>
+			<td>{{.Id}}</td>
+			<td>{{.Title}}</td>
+			<!--  <td>{{.Intro}}</td> 
+			<td>{{.Content}}</td>
+			<td>category id </td>
+			<td>{{.Hits}}</td>
+			<td>{{.Created}}</td>
+			<td>{{.Updated}}</td> -->
+			<td><a href="{{ url "Admin.MoviePreview" .Id}}">Preview</a> | <a href="{{url "Admin.MovieEdit" .Id }}">Edit</a> | <a href="{{url "Admin.MovieDelete" .Id}}" onclick="return confirm('一旦删除将不可恢复，确定吗？');">Del</a></td>
+		</tr>
+		{{end}}
+	</tbody>
+</table>
+</div>
+{{template "admin/footer.html" .}}

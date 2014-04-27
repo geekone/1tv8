@@ -1,0 +1,32 @@
+{{set . "title" "分类列表"}}
+{{template "admin/header.html" .}}
+
+<h4 class="sub-header">分类列表｜<a href="{{url "Admin.CategoryNew"}}">添加分类</a></h4>
+<div class="table-responsive">
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>名称</th>
+			<th>介绍</th>
+			<th>分类ID</th>
+			<th>建立时间</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{range .categories}}
+		<tr>
+			<td>{{.Id}}</td>
+			<td>{{.Name}}</td>
+			<td>{{.Intro}}</td>
+			<td>{{.Cateid}}</td>
+			<td>{{.Created}}</td>
+			<td><a href="{{url "Admin.CategoryEdit" .Id }}">Edit</a> |  | <a href="{{url "Admin.CategoryDelete" .Id}}" onclick="return confirm('一旦删除将不可恢复，确定吗？');">Del</a> </td>
+		</tr>
+		{{end}}
+	</tbody>
+</table>
+</div>
+
+{{template "admin/footer.html" .}}

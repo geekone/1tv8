@@ -1,0 +1,12 @@
+
+ <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/public/lib/jquery.min.js"></script>
+    <script src="/public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/home/js/docs.min.js"></script>
+   {{if eq .RunMode "dev"}}
+    {{template "debug.html" .}}
+  {{end}}
+  </body>
+</html>
