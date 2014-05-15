@@ -1,6 +1,6 @@
 {{template "admin/header.html" .}}
 
-<h2 class="sub-header">{{.title}}｜<a href="{{url "Admin.MovieList"}}">视频列表</a></h2>
+<h4 class="sub-header">{{.title}}｜<a href="{{url "Admin.MovieList"}}">视频列表</a></h4>
 <div class="table-responsive">
 <form class="form-horizontal" role="form" method="post" action="{{if .movie}}{{url "Admin.MovieEdit" .movie.Id}}{{else}}{{url "Admin.MovieNew"}}{{end}}">
 	

@@ -9,6 +9,13 @@ import (
 	// "github.com/revel/revel"
 )
 
+
+const (
+	USER_STATUS_INACTIVE = iota
+	USER_STATUS_ACTIVATED
+	USER_STATUS_DISABLE
+)
+
 var (
 	Avatars = []string{
 		"gopher_teal.jpg",
@@ -25,14 +32,15 @@ type User struct {
 	Name            string
 	Email           string
 	HashedPassword  string
+	Salt            string
 	Type            int // 1管理员，2普通用户
 	Avatar          string
 	ValidateCode    string
-	IsActive        bool
+	Status          int
 	Created         time.Time   `xorm:"created"`
 	Updated         time.Time   `xorm:"updated"`
 	Password        string      `xorm:"-"`
-	ConfirmPassword string      `xorm:"-"`
+	ConfirmPassword string      `xorm:"-"`				//- 表示不建表字段
 	Permissions     map[int]int `xorm:"-"`
 }
 

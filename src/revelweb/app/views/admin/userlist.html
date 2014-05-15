@@ -1,0 +1,30 @@
+{{set . "title" "用户列表"}}
+{{template "admin/header.html" .}}
+<h4 class="sub-header">用户列表 | <a href="{{url "Admin.ArticleNew"}}">添加文章</a></h4>
+<div>
+<table class="table table-bordered table-striped">
+<thead>
+	<tr>
+		<th>#</th>
+		<th>名字</th>
+		<th>注册邮箱</th>
+		<th>注册时间</th>
+		<th>激活</th>
+		<th>操作</th>
+	</tr>
+</thead>
+<tbody>
+{{range .users}}
+	<tr>
+		<td>{{.Id}}</td>
+		<td>{{.Name}}</td>
+		<td>{{.Email}}</td>
+		<td>{{.Crated}}</td>
+		<td>{{.IsActive}}</td>
+		<td>DEL | EDIT</td>
+	</tr>
+{{end}}
+</tbody>
+</table>
+</div>
+{{template "admin/footer.html" .}}

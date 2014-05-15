@@ -11,7 +11,7 @@ type Movie struct {
 	Intro	string `xorm:"text"`
 	Content string `xorm:"text"`
 	Category Category `xorm:"category_id bigint"`
-	Hits	int
+	Hits	int64
 	Created time.Time `xorm:"created"`
 	Updated time.Time `xorm:"updated"`
 }

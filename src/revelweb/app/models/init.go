@@ -34,6 +34,7 @@ func Init(){
 		new(User),
 		new(Category),
 		new(Movie),
+		new(Article),
 		// new(Reply),
 		// new(Permissions),
 	)

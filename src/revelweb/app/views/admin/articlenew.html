@@ -1,0 +1,39 @@
+{{template "admin/header.html" .}}
+<h4 class="sub-header">{{.title}}｜<a href="{{url "Admin.ArticleList"}}">文章列表</a></h4>
+<div>
+<form class="form-horizontal" role="form" method="post" action="{{if .article}}{{url "Admin.ArticleEdit" .article.Id}}{{else}}{{url "Admin.ArticleNew"}}{{end}}">
+	{{with $field := field "article.Title" .}}
+		<div class="form-group">
+			<label for="title" class="col-sm-1 control-label">文章标题:</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" id="{{$field.Name}}" name="{{$field.Name}}" value="{{$.article.Title}}">
+			</div>
+		</div>
+	{{end}}
+	{{with $field := field "article.Intro" .}}
+		<div class="form-group">
+			<label for="intro" class="col-sm-1 control-label">文章简介:</label>
+			<div class="col-sm-8">
+				<textarea class="form-control" rows="5" id="{{$field.Name}}" name="{{$field.Name}}">{{$.article.Intro}}</textarea>
+			</div>
+		</div>
+	{{end}}
+
+	{{with $field := field "article.Content" .}}
+		<div class="form-group">
+			<label for="content" class="col-sm-1 control-label">文章内容:</label>
+			<div class="col-sm-8">
+				<textarea class="form-control" rows="5" id="{{$field.Name}}" name="{{$field.Name}}">{{$.article.Content}}</textarea>
+			</div>
+		</div>
+	{{end}}
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-primary">保存</buttou> 
+			<button type="button" class="btn btn-default" onclick="javascript:history.back();">取消</button>
+		</div>
+	</div>
+</form>
+</div>
+{{template "admin/footer.html" .}}

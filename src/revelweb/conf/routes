@@ -7,7 +7,18 @@ module:testrunner
 GET     /                                       App.Index
 
 
+
+GET     /signup	             					User.Signup
+POST    /signup 								User.SignupPost
+
 GET  	/admin									Admin.Index
+
+GET 	/admin/user								Admin.UserList
+GET		/admin/user/:id/delete      			Admin.UserDelete
+GET		/admin/user/:id/activate				Admin.UserActivate
+
+
+
 GET     /admin/category                         Admin.CategoryList
 GET     /admin/category/new                     Admin.CategoryNew
 POST 	/admin/category/new 					Admin.CategoryPost
@@ -22,6 +33,13 @@ GET		/admin/movie/:id/delete 				Admin.MovieDelete
 GET		/admin/movie/:id/edit					Admin.MovieEdit
 POST 	/admin/movie/:id/edit 					Admin.MovieEditPost
 
+
+GET		/admin/article							Admin.ArticleList
+GET		/admin/article/new  					Admin.ArticleNew
+POST  	/admin/article/new 						Admin.ArticlePost
+GET		/admin/article/:id/delete 				Admin.ArticleDelete
+GET		/admin/article/:id/edit 				Admin.ArticleEdit
+POST    /admin/article/:id/edit      			Admin.ArticleEditPost
 
 GET 	/admin/movie/:id/preview				Admin.MoviePreview
 
