@@ -10,6 +10,8 @@ GET     /                                       App.Index
 
 GET     /signup	             					User.Signup
 POST    /signup 								User.SignupPost
+GET		/signin									User.Signin
+
 
 GET  	/admin									Admin.Index
 

@@ -6,7 +6,7 @@ import (
 	// "io"
 	// "regexp"
 	"time"
-	// "github.com/revel/revel"
+	"github.com/revel/revel"
 )
 
 
@@ -47,6 +47,14 @@ type User struct {
 //重命名表名
 func(c *User) TableName() string {
 	return "t_user"
+}
+
+//建立用户的验证方法,不是* ,引用 revel的验证类,对用户对象进行验证
+func(user User) Validate(v *revel.Validation){
+	v.Required(user.Name).Message("请输入用户名")			//不能为空
+	v.Required(user.Email).Message("请输入Email")			//邮件不能为空
+	v.Required(user.Password).Message("请输入密码")				//密码不能为空
+	v.Required(user.ConfirmPassword == user.Password).Message("密码不一致")		//密码不一致
 }
 
 

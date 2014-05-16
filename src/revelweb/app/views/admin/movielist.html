@@ -28,7 +28,10 @@
 			<td>{{.Hits}}</td>
 			<td>{{.Created}}</td>
 			<td>{{.Updated}}</td> -->
-			<td><a href="{{ url "Admin.MoviePreview" .Id}}">Preview</a> | <a href="{{url "Admin.MovieEdit" .Id }}">Edit</a> | <a href="{{url "Admin.MovieDelete" .Id}}" onclick="return confirm('一旦删除将不可恢复，确定吗？');">Del</a></td>
+			<td>
+				<a href="{{url "Admin.MovieEdit" .Id }}" title="编辑" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span>编辑<a>
+				<a href="{{url "Admin.MovieDelete" .Id}}" title="删除" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>删除<a>
+			</td>
 		</tr>
 		{{end}}
 	</tbody>

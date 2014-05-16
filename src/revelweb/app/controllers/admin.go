@@ -4,7 +4,9 @@ import (
 	"github.com/revel/revel"
 	"revelweb/app/models"
 	"revelweb/app/routes"
-	// "fmt"
+	"fmt"
+	"strings"
+	
 )
 
 type Admin struct {
@@ -32,7 +34,7 @@ func(c Admin) UserDelete(id int64) revel.Result{
 	return c.Redirect(routes.Admin.UserList())
 }
 
-//激活用户
+//TODO 激活用户
 func(c Admin) UserActivate(id int64) revel.Result{
 	aff,_:=engine.Id(id).Cols("status").Update(&models.User{
 		Status:models.USER_STATUS_ACTIVATED,
@@ -46,10 +48,33 @@ func(c Admin) UserActivate(id int64) revel.Result{
 
 
 //分类列表
-func (c Admin) CategoryList() revel.Result{
+func (c Admin) CategoryList(page int ) revel.Result{
+	// var _page string = c.Params.Get("page")
+	// page,_ := strconv.Atoi(_page)
+
+	url := routes.Admin.CategoryList(page)
+	if page < 1 {
+		page = 1
+		url = url[:strings.Index(url,"=")+1] + "1"		//如果page为空,加1
+	}
+
+	fmt.Println(url)
+	
 	var categories []*models.Category
-	engine.Find(&categories)
-	return c.Render(categories)
+
+	var rows int64 //取出总数
+	rows,_ = engine.Count(&models.Category{})
+	fmt.Println(rows)
+	//根据page 当前页 取出数据
+	err := engine.Limit(ROWS_PER_PAGE,(page-1)*ROWS_PER_PAGE).Find(&categories)
+	if err !=nil{
+		revel.ERROR.Println(err)
+	}
+
+	pagination := NewPagination(page,int(rows),url[:strings.Index(url, "=")+1])
+	
+	// engine.Find(&categories)
+	return c.Render(categories,pagination)
 }
 
 //添加分类
@@ -68,7 +93,7 @@ func (c Admin) CategoryPost(category models.Category) revel.Result{
 		//TODO 成功之后
 	}
 
-	return c.Redirect(routes.Admin.CategoryList())
+	return c.Redirect(routes.Admin.CategoryList(0))
 }
 
 //删除分类
@@ -77,7 +102,7 @@ func (c Admin) CategoryDelete(id int64) revel.Result{
 	if aff > 0{
 		//TODO 删除成功之后
 	}
-	return c.Redirect(routes.Admin.CategoryList())
+	return c.Redirect(routes.Admin.CategoryList(0))
 }
 
 //跳到修改页面，使用新建一样的页面
@@ -105,7 +130,7 @@ func (c Admin) CategoryEditPost(id int64,category models.Category) revel.Result{
 			if aff > 0{
 				//TODO 修改成功之后
 			}
-			return c.Redirect(routes.Admin.CategoryList())
+			return c.Redirect(routes.Admin.CategoryList(0))
 }
 
 

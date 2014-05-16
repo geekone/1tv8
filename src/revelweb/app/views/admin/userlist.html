@@ -9,7 +9,6 @@
 		<th>名字</th>
 		<th>注册邮箱</th>
 		<th>注册时间</th>
-		<th>激活</th>
 		<th>操作</th>
 	</tr>
 </thead>
@@ -19,9 +18,11 @@
 		<td>{{.Id}}</td>
 		<td>{{.Name}}</td>
 		<td>{{.Email}}</td>
-		<td>{{.Crated}}</td>
-		<td>{{.IsActive}}</td>
-		<td>DEL | EDIT</td>
+		<td>{{.Created}}</td>
+		<td>
+		<a href="/test" title="编辑" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-pencil"></span>编辑<a>
+		<a href="{{url "Admin.UserDelete" .Id}}" onclick="return confirm('一旦删除将不可恢复，确定吗？');" title="删除"  class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>删除<a>
+		</td>
 	</tr>
 {{end}}
 </tbody>
